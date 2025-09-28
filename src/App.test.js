@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
+test('affiche le slogan principal de Hark Elec', () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  const headline = screen.getByText(/l'expertise électrique/i);
+  expect(headline).toBeInTheDocument();
 });
