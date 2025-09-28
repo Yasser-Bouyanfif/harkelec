@@ -186,25 +186,11 @@ function App() {
                 <li>🔒 Assurance décennale</li>
               </ul>
             </div>
-            <div className="hero-card">
-              <div className="hero-card-header">
-                <span>Urgence & projets</span>
-                <strong>05 12 34 56 78</strong>
-              </div>
-              <div className="hero-card-body">
-                <p>Des experts à votre écoute pour vos projets électriques.</p>
-                <div className="hero-card-list">
-                  <span>• Diagnostic complet sur site</span>
-                  <span>• Matériel certifié NF & CE</span>
-                  <span>• Planning maîtrisé</span>
-                </div>
-                <button
-                  className="btn btn-outline"
-                  onClick={() => scrollToSection("process")}
-                >
-                  Comprendre notre méthode
-                </button>
-              </div>
+            <div className="hero-visual">
+              <img
+                src="/ampoule.png"
+                alt="Illustration d'une ampoule lumineuse"
+              />
             </div>
           </div>
 
