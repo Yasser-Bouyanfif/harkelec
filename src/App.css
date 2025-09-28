@@ -257,10 +257,10 @@ body {
   background: white;
   border-radius: 24px;
   box-shadow: 0 25px 60px rgba(15, 23, 42, 0.1);
-  padding: 32px;
+  padding: 24px 28px 26px;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 20px;
   border: 1px solid rgba(13, 148, 136, 0.1);
   max-width: 400px;
   margin-left: auto;
@@ -287,7 +287,7 @@ body {
 .hero-card-body {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 14px;
   color: #475569;
   flex-grow: 1;
 }
@@ -295,7 +295,7 @@ body {
 .hero-card-list {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
   font-size: 0.95rem;
 }
 
@@ -364,9 +364,13 @@ body {
 }
 
 /* Services */
+.services .layout-container {
+  width: min(1320px, 100%);
+}
+
 .services-grid {
   display: grid;
-  gap: 32px;
+  gap: 24px;
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
@@ -523,6 +527,10 @@ body {
   font-size: 0.95rem;
 }
 
+.zone.section-block {
+  padding: 120px 0 40px;
+}
+
 .map-container {
   width: 100%;
   border-radius: 24px;
@@ -535,6 +543,10 @@ body {
   background: linear-gradient(160deg, #0f172a 0%, #1e293b 100%);
   color: white;
   padding-bottom: 160px;
+}
+
+.contact.section-block {
+  padding: 80px 0 160px;
 }
 
 .contact-grid {
