@@ -205,20 +205,24 @@ function App() {
             <div className="contact-form-container">
               <form className="contact-form">
                 <div className="form-row">
-                  <div className="form-group">
-                    <input type="text" placeholder="Nom complet" required />
+                  <div className="form-group required">
+                    <label htmlFor="nom">Nom complet</label>
+                    <input type="text" id="nom" placeholder="Votre nom et prénom" required />
                   </div>
-                  <div className="form-group">
-                    <input type="tel" placeholder="Téléphone" required />
+                  <div className="form-group required">
+                    <label htmlFor="telephone">Téléphone</label>
+                    <input type="tel" id="telephone" placeholder="06 12 34 56 78" required />
                   </div>
                 </div>
                 
-                <div className="form-group">
-                  <input type="email" placeholder="Email" required />
+                <div className="form-group required">
+                  <label htmlFor="email">Adresse email</label>
+                  <input type="email" id="email" placeholder="votre@email.fr" required />
                 </div>
                 
-                <div className="form-group">
-                  <select required>
+                <div className="form-group required">
+                  <label htmlFor="service">Type d'intervention</label>
+                  <select id="service" required>
                     <option value="">Type d'intervention</option>
                     <option value="installation">Installation électrique</option>
                     <option value="depannage">Dépannage urgent</option>
@@ -228,12 +232,13 @@ function App() {
                   </select>
                 </div>
                 
-                <div className="form-group">
-                  <textarea rows="4" placeholder="Description du projet" required></textarea>
+                <div className="form-group required">
+                  <label htmlFor="description">Description du projet</label>
+                  <textarea id="description" rows="4" placeholder="Décrivez votre projet en détail : type de travaux, surface, délais souhaités..." required></textarea>
                 </div>
                 
                 <button type="submit" className="btn btn-primary btn-full">
-                  Envoyer la demande
+                  📧 Envoyer ma demande de devis
                 </button>
               </form>
             </div>
