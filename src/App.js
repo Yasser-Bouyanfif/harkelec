@@ -3,84 +3,88 @@ import "./App.css";
 
 const services = [
   {
-    title: "Installations complètes",
+    title: "Électricité générale",
     description:
-      "Création ou rénovation de vos réseaux électriques résidentiels et tertiaires conformément à la norme NF C 15-100.",
+      "Installation complète, rénovation et mise en conformité NF C 15-100 pour l'habitat et le tertiaire.",
     items: [
-      "Tableaux dernière génération",
-      "Câblage structurel",
-      "Solutions domotiques",
+      "Création d'installations neuves",
+      "Rénovation et mise aux normes",
+      "Dépannages et sécurisation",
+      "Pose de tableaux, prises et éclairages",
     ],
     icon: "⚡️",
   },
   {
-    title: "Dépannage express 7j/7",
+    title: "Domotique & automatismes",
     description:
-      "Localisation de pannes, remise en service sécurisée et remplacement des protections défectueuses dans l'heure sur le secteur d'Auribail.",
+      "Solutions connectées pour piloter votre éclairage, chauffage et motorisations depuis un smartphone ou des scénarios personnalisés.",
     items: [
-      "Recherche de défauts",
-      "Mise en sécurité",
-      "Rapport d’intervention",
+      "Gestion intelligente de l'éclairage",
+      "Thermostats et chauffage connectés",
+      "Motorisation de portails et garages",
+      "Volets et stores automatisés",
     ],
-    icon: "🛠️",
+    icon: "🏠",
   },
   {
-    title: "Éclairage & confort",
+    title: "Réseaux & fibre optique",
     description:
-      "Études lumineuses, installation de solutions LED basse consommation et pilotage intelligent de vos éclairages intérieurs et extérieurs.",
+      "Conception de réseaux performants, câblage RJ45 et tirage de fibre optique du point de branchement jusqu'à vos équipements.",
     items: [
-      "Éclairage architectural",
-      "Gestion crépusculaire",
-      "Variateurs connectés",
+      "Câblage LAN résidentiel et pro",
+      "Installation de prises RJ45 et TV",
+      "Tirage et raccordement fibre FTTH",
+      "Mise en service des box et routeurs",
     ],
-    icon: "💡",
+    icon: "📶",
   },
   {
-    title: "Sécurité & bornes IRVE",
+    title: "Énergies & mobilité électrique",
     description:
-      "Installation de systèmes de protection, de vidéosurveillance et bornes de recharge pour véhicules électriques labellisées ADVENIR.",
+      "Installation de bornes de recharge et accompagnement sur les solutions d'efficacité énergétique éligibles aux aides de l'État.",
     items: [
-      "Alarmes & interphones",
-      "Parafoudre & surtension",
-      "Bornes 7kW à 22kW",
+      "Études techniques personnalisées",
+      "Pose de wallbox domestiques et pro",
+      "Optimisation de la consommation",
+      "Qualification RGE pour vos aides",
     ],
-    icon: "🔒",
+    icon: "🔋",
   },
 ];
 
 const commitments = [
   {
-    title: "Interventions certifiées",
+    title: "Entreprise certifiée RGE",
     description:
-      "Entreprise Qualifelec, assurances décennale et responsabilité civile à jour.",
+      "Travaux éligibles aux dispositifs d'aides comme MaPrimeRénov' grâce à notre qualification Reconnu Garant de l'Environnement.",
   },
   {
-    title: "Conseil sur mesure",
+    title: "Accompagnement global",
     description:
-      "Une étude technique détaillée et des devis clairs sous 24h ouvrées.",
+      "Un interlocuteur unique qui suit votre projet de l'étude technique à la mise en service et la prise en main des équipements.",
   },
   {
-    title: "Traçabilité complète",
+    title: "Qualité de proximité",
     description:
-      "Compte rendu digitalisé, photos avant/après et garantie pièces & main d’œuvre.",
+      "Interventions pour particuliers, entreprises et collectivités avec des matériels professionnels et durables.",
   },
 ];
 
 const process = [
   {
-    title: "Prise de contact",
+    title: "Diagnostic & conseils",
     description:
-      "Un expert vous rappelle en moins de 2h ouvrées pour qualifier vos besoins et planifier un rendez-vous.",
+      "Analyse de l'existant, qualification des besoins et recommandations personnalisées pour sécuriser votre installation.",
   },
   {
-    title: "Audit & devis",
+    title: "Étude & réalisation",
     description:
-      "Visite sur site à Auribail et alentours, relevé des existants et remise d’un devis détaillé sous 24h.",
+      "Dimensionnement, fourniture du matériel et travaux dans le respect des normes NF C 15-100 et des règles RGE.",
   },
   {
-    title: "Réalisation & suivi",
+    title: "Mise en service & suivi",
     description:
-      "Travaux réalisés dans le respect des normes, contrôle qualité final et maintenance préventive optionnelle.",
+      "Tests, programmation des automatismes et accompagnement à la prise en main avec options de maintenance.",
   },
 ];
 
@@ -118,8 +122,8 @@ function App() {
             role="button"
             tabIndex={0}
           >
-            <img src="/Logo Hark Elec 31.png" alt="Hark Elec" />
-            <span>Hark Elec</span>
+            <img src="/Logo Hark Elec 31.png" alt="FCR Elec" />
+            <span>FCR Elec</span>
           </div>
           <div className="nav-links">
             <button type="button" onClick={() => scrollToSection("services")}>
@@ -155,16 +159,19 @@ function App() {
           <div className="hero-grid">
             <div className="hero-text">
               <span className="hero-eyebrow">
-                Électricien professionnel à Auribail (31190)
+                Électricien généraliste pour particuliers & professionnels
               </span>
               <h1>
-                Conception, rénovation et maintenance
-                <span className="hero-highlight">électriques clé en main</span>
+                Des installations
+                <span className="hero-highlight">
+                  électriques et connectées sur-mesure
+                </span>
               </h1>
               <p className="hero-description">
-                Hark Elec accompagne les particuliers, copropriétés et
-                professionnels de la Haute-Garonne. Interventions rapides,
-                garanties et conformes aux normes NF C 15-100.
+                FCR Elec prend en charge l'intégralité de vos projets :
+                installation, rénovation, dépannage, domotique, réseaux et
+                bornes de recharge. Des prestations certifiées RGE pour des
+                travaux durables et éligibles aux aides de l'État.
               </p>
               <div className="hero-actions">
                 <button
@@ -181,9 +188,9 @@ function App() {
                 </button>
               </div>
               <ul className="hero-badges">
-                <li>⚡ Mise en sécurité immédiate</li>
-                <li>📍 Basé à Auribail</li>
-                <li>🔒 Assurance décennale</li>
+                <li>✅ Qualification RGE</li>
+                <li>🏢 Particuliers, pros & collectivités</li>
+                <li>🛠️ Dépannages et projets clés en main</li>
               </ul>
             </div>
             <div className="hero-visual">
@@ -196,20 +203,20 @@ function App() {
 
           <div className="stats-bar">
             <div className="stat-item">
-              <strong>15 ans</strong>
-              <span>d’expérience terrain</span>
+              <strong>200+</strong>
+              <span>installations électriques livrées</span>
             </div>
             <div className="stat-item">
-              <strong>98%</strong>
-              <span>de clients satisfaits</span>
+              <strong>80%</strong>
+              <span>de projets domotiques connectés</span>
             </div>
             <div className="stat-item">
-              <strong>50 km</strong>
-              <span>autour d’Auribail couverts</span>
+              <strong>150 km</strong>
+              <span>de câbles posés chaque année</span>
             </div>
             <div className="stat-item">
               <strong>24h</strong>
-              <span>pour un devis détaillé</span>
+              <span>pour un diagnostic et un devis</span>
             </div>
           </div>
         </div>
@@ -218,11 +225,11 @@ function App() {
       <section id="services" className="services">
         <div className="section-header">
           <span className="section-eyebrow">Nos expertises</span>
-          <h2>Des solutions électriques haut de gamme</h2>
+          <h2>Des services électriques complets et évolutifs</h2>
           <p>
-            Nous prenons en charge l’ensemble de vos installations électriques,
-            de la conception à la maintenance. Chaque projet est livré avec
-            dossier technique et garanties.
+            Installation générale, domotique, réseau et mobilité électrique :
+            nous couvrons tous vos besoins avec des solutions fiables,
+            performantes et évolutives pour votre habitat ou votre entreprise.
           </p>
         </div>
 
@@ -247,10 +254,10 @@ function App() {
       <section id="engagements" className="commitments">
         <div className="section-header">
           <span className="section-eyebrow">Nos engagements</span>
-          <h2>Un partenaire technique fiable</h2>
+          <h2>Votre sécurité et votre confort comme priorités</h2>
           <p>
-            Transparence, sécurité et accompagnement durable sont au cœur de
-            chaque intervention.
+            Nous garantissons des travaux tracés, conformes et pensés pour la
+            performance énergétique de vos installations.
           </p>
         </div>
         <div className="commitments-grid">
@@ -266,10 +273,10 @@ function App() {
       <section id="process" className="process">
         <div className="section-header">
           <span className="section-eyebrow">Notre méthodologie</span>
-          <h2>Un déroulé précis de votre projet</h2>
+          <h2>Un accompagnement transparent à chaque étape</h2>
           <p>
-            Une conduite de travaux structurée pour sécuriser vos installations
-            et respecter vos délais.
+            De l'audit initial à la prise en main des équipements, nous
+            sécurisons votre projet électrique et digital.
           </p>
         </div>
         <div className="process-grid">
@@ -286,23 +293,24 @@ function App() {
       <section id="zone" className="zone-section">
         <div className="section-header">
           <span className="section-eyebrow">Zone d’intervention</span>
-          <h2>Basés à Auribail, mobiles sur tout le sud toulousain</h2>
+          <h2>Un artisan mobile sur votre département et les alentours</h2>
           <p>
-            Nous intervenons rapidement sur Auribail et dans un rayon de 50 km :
-            Cintegabelle, Auterive, Muret, Carbonne, Nailloux, ainsi que
-            l’ensemble de la Haute-Garonne sud.
+            Nous assurons les interventions sur site pour les habitations,
+            commerces et collectivités. Dépannages urgents, chantiers
+            planifiés ou projets connectés : nous nous adaptons à votre
+            planning et à vos contraintes.
           </p>
         </div>
         <div className="zone-content">
           <div className="zone-cards">
             <div className="zone-card">
-              <h3>Secteur prioritaire</h3>
+              <h3>Zone prioritaire</h3>
               <p>
-                Interventions en moins de 2h sur Auribail et les communes
-                limitrophes.
+                Dépannages rapides et chantiers planifiés dans la commune de
+                rattachement de FCR Elec et les villes voisines.
               </p>
               <div className="zone-details">
-                <span>Déplacement offert</span>
+                <span>Intervention urgente</span>
                 <span>Technicien dédié</span>
                 <span>Disponibilité 7j/7</span>
               </div>
@@ -310,15 +318,15 @@ function App() {
             <div className="zone-card">
               <h3>Zone étendue</h3>
               <p>
-                Prise en charge des chantiers jusqu’à 50 km (Toulouse sud,
-                Ariège, Lauragais).
+                Prise en charge de vos projets électriques, domotiques et
+                réseaux sur l'ensemble du département et limitrophes.
               </p>
               <div className="zone-details">
                 <span>Pré-visite numérique</span>
                 <span>Devis sous 24h</span>
-                <span>Planification prioritaire</span>
+                <span>Coordination multi-sites</span>
               </div>
-            </div>
+          </div>
           </div>
           <div className="map-container">
             <iframe
@@ -341,9 +349,9 @@ function App() {
             <span className="section-eyebrow">Contact</span>
             <h2>Discutons de votre projet électrique</h2>
             <p>
-              Décrivez vos besoins via le formulaire ou appelez-nous
-              directement. Nous revenons vers vous avec une proposition claire
-              et budgétisée sous 24h ouvrées.
+              Installation, mise en conformité, domotique, réseau ou borne de
+              recharge : expliquez-nous vos attentes. Nous vous apportons une
+              réponse claire et budgétisée sous 24h ouvrées.
             </p>
             <div className="contact-cards">
               <div className="contact-card">
@@ -389,13 +397,14 @@ function App() {
                 <select id="service" required>
                   <option value="">Sélectionnez un service</option>
                   <option value="installation">
-                    Installation électrique complète
+                    Installation ou rénovation électrique
                   </option>
                   <option value="depannage">
                     Dépannage / Mise en sécurité
                   </option>
-                  <option value="renovation">
-                    Rénovation / Mise aux normes
+                  <option value="domotique">Domotique & automatismes</option>
+                  <option value="reseau">
+                    Réseaux informatiques / Fibre optique
                   </option>
                   <option value="irve">
                     Borne de recharge véhicule électrique
@@ -423,17 +432,17 @@ function App() {
       <footer className="footer">
         <div className="footer-content">
           <div className="footer-brand">
-            <img src="/Logo Hark Elec 31.png" alt="Hark Elec" />
+            <img src="/Logo Hark Elec 31.png" alt="FCR Elec" />
             <div>
-              <strong>Hark Elec</strong>
-              <span>Électricien artisanal - Auribail & Haute-Garonne</span>
+              <strong>FCR Elec</strong>
+              <span>Électricien généraliste - Services complets</span>
             </div>
           </div>
           <div className="footer-links">
             <span>SIRET 123 456 789 00012</span>
-            <span>Qualifelec & IRVE</span>
+            <span>Qualification RGE & IRVE</span>
             <span>
-              &copy; {new Date().getFullYear()} Hark Elec. Tous droits réservés.
+              &copy; {new Date().getFullYear()} FCR Elec. Tous droits réservés.
             </span>
           </div>
         </div>
