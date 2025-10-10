@@ -433,7 +433,7 @@ function App() {
       <footer className="footer">
         <div className="footer-content">
           <div className="footer-brand">
-            <img src="/Logo Hark Elec 31.png" alt="Hark-Elec 31" />
+            <img src="/logo.png" alt="Hark-Elec 31" />
             <div>
               <strong>Hark-Elec 31</strong>
               <span>Patrice Fonteneau - Électricien généraliste</span>
