@@ -122,8 +122,8 @@ function App() {
             role="button"
             tabIndex={0}
           >
-            <img src="/Logo Hark Elec 31.png" alt="FCR Elec" />
-            <span>FCR Elec</span>
+            <img src="/logo.png" alt="Hark-Elec 31" />
+            <span>Hark-Elec 31</span>
           </div>
           <div className="nav-links">
             <button type="button" onClick={() => scrollToSection("services")}>
@@ -146,8 +146,8 @@ function App() {
             </button>
           </div>
           <div className="nav-cta">
-            <a href="tel:+33512345678" className="btn btn-primary">
-              05 12 34 56 78
+            <a href="tel:+33673262371" className="btn btn-primary">
+              06 73 26 23 71
             </a>
           </div>
         </div>
@@ -168,10 +168,11 @@ function App() {
                 </span>
               </h1>
               <p className="hero-description">
-                FCR Elec prend en charge l'intégralité de vos projets :
-                installation, rénovation, dépannage, domotique, réseaux et
-                bornes de recharge. Des prestations certifiées RGE pour des
-                travaux durables et éligibles aux aides de l'État.
+                Hark-Elec 31, dirigée par Patrice Fonteneau, prend en charge
+                l'intégralité de vos projets : installation, rénovation,
+                dépannage, domotique, réseaux et bornes de recharge. Des
+                prestations certifiées RGE pour des travaux durables et
+                éligibles aux aides de l'État.
               </p>
               <div className="hero-actions">
                 <button
@@ -307,7 +308,7 @@ function App() {
               <h3>Zone prioritaire</h3>
               <p>
                 Dépannages rapides et chantiers planifiés dans la commune de
-                rattachement de FCR Elec et les villes voisines.
+                rattachement de Hark-Elec 31 et les villes voisines.
               </p>
               <div className="zone-details">
                 <span>Intervention urgente</span>
@@ -356,7 +357,7 @@ function App() {
             <div className="contact-cards">
               <div className="contact-card">
                 <h3>☎ Téléphone</h3>
-                <a href="tel:+33512345678">05 12 34 56 78</a>
+                <a href="tel:+33673262371">06 73 26 23 71</a>
                 <span>Urgences et rendez-vous</span>
               </div>
               <div className="contact-card">
@@ -432,17 +433,17 @@ function App() {
       <footer className="footer">
         <div className="footer-content">
           <div className="footer-brand">
-            <img src="/Logo Hark Elec 31.png" alt="FCR Elec" />
+            <img src="/Logo Hark Elec 31.png" alt="Hark-Elec 31" />
             <div>
-              <strong>FCR Elec</strong>
-              <span>Électricien généraliste - Services complets</span>
+              <strong>Hark-Elec 31</strong>
+              <span>Patrice Fonteneau - Électricien généraliste</span>
             </div>
           </div>
           <div className="footer-links">
             <span>SIRET 123 456 789 00012</span>
             <span>Qualification RGE & IRVE</span>
             <span>
-              &copy; {new Date().getFullYear()} FCR Elec. Tous droits réservés.
+              &copy; {new Date().getFullYear()} Hark-Elec 31. Tous droits réservés.
             </span>
           </div>
         </div>
