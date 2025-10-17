@@ -5,7 +5,7 @@ const services = [
   {
     title: "Électricité générale",
     description:
-      "Installation complète, rénovation et mise en conformité NF C 15-100 pour l'habitat et le tertiaire.",
+      "Installation complète, rénovation et mise en conformité électrique pour l'habitat et le tertiaire.",
     items: [
       "Création d'installations neuves",
       "Rénovation et mise aux normes",
@@ -43,9 +43,7 @@ const services = [
     description:
       "Installation de bornes de recharge et accompagnement sur les solutions d'efficacité énergétique éligibles aux aides de l'État.",
     items: [
-      "Études techniques personnalisées",
       "Pose de wallbox domestiques et pro",
-      "Optimisation de la consommation",
       "Aide au montage des dossiers de financement",
     ],
     icon: "🔋",
@@ -79,7 +77,7 @@ const process = [
   {
     title: "Étude & réalisation",
     description:
-      "Dimensionnement, fourniture du matériel et travaux dans le respect des normes NF C 15-100 et des meilleures pratiques métier.",
+      "Dimensionnement, fourniture du matériel et travaux dans le respect des meilleures pratiques métier.",
   },
   {
     title: "Mise en service & suivi",
@@ -170,8 +168,7 @@ function App() {
               <p className="hero-description">
                 Hark-Elec 31, dirigée par Patrice Fonteneau, prend en charge
                 l'intégralité de vos projets : installation, rénovation,
-                dépannage, domotique, réseaux et bornes de recharge. Des
-                prestations fiables et durables, éligibles aux aides de l'État.
+                dépannage, domotique, réseaux et bornes de recharge.
               </p>
               <div className="hero-actions">
                 <button
@@ -361,7 +358,7 @@ function App() {
               </div>
               <div className="contact-card">
                 <h3>✉ Email</h3>
-                <a href="mailto:contact@harkelec.fr">contact@harkelec.fr</a>
+                <a href="mailto:contact@hark-elec31.fr">contact@hark-elec31.fr</a>
                 <span>Réponse garantie sous 48h</span>
               </div>
             </div>
@@ -440,7 +437,6 @@ function App() {
           </div>
           <div className="footer-links">
             <span>SIRET 123 456 789 00012</span>
-            <span>Spécialiste IRVE et solutions électriques</span>
             <span>
               &copy; {new Date().getFullYear()} Hark-Elec 31. Tous droits réservés.
             </span>
