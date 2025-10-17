@@ -43,8 +43,8 @@ const services = [
     description:
       "Installation de bornes de recharge et accompagnement sur les solutions d'efficacité énergétique éligibles aux aides de l'État.",
     items: [
-      "Pose de wallbox domestiques et pro",
-      "Aide au montage des dossiers de financement",
+      "Études techniques et personnalisés",
+      "Optimisation de la consommation",
     ],
     icon: "🔋",
   },
