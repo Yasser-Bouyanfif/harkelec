@@ -41,7 +41,7 @@ const services = [
   {
     title: "Énergies & mobilité électrique",
     description:
-      "Installation de bornes de recharge et accompagnement sur les solutions d'efficacité énergétique éligibles aux aides de l'État.",
+      "Installation de bornes de recharge et accompagnement sur les solutions d'efficacité énergétique.",
     items: [
       "Études techniques et personnalisés",
       "Optimisation de la consommation",
