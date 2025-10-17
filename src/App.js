@@ -127,12 +127,6 @@ function App() {
             <button type="button" onClick={() => scrollToSection("services")}>
               Services
             </button>
-            <button
-              type="button"
-              onClick={() => scrollToSection("engagements")}
-            >
-              Engagements
-            </button>
             <button type="button" onClick={() => scrollToSection("process")}>
               Méthode
             </button>
@@ -234,25 +228,6 @@ function App() {
                 </ul>
               </div>
             </article>
-          ))}
-        </div>
-      </section>
-
-      <section id="engagements" className="commitments">
-        <div className="section-header">
-          <span className="section-eyebrow">Nos engagements</span>
-          <h2>Votre sécurité et votre confort comme priorités</h2>
-          <p>
-            Nous garantissons des travaux tracés, conformes et pensés pour la
-            performance énergétique de vos installations.
-          </p>
-        </div>
-        <div className="commitments-grid">
-          {commitments.map((item) => (
-            <div className="commitment-card" key={item.title}>
-              <h3>{item.title}</h3>
-              <p>{item.description}</p>
-            </div>
           ))}
         </div>
       </section>

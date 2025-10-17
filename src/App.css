@@ -366,18 +366,7 @@ section {
   margin-right: 8px;
 }
 
-/* Commitments */
-.commitments {
-  max-width: 1180px;
-  margin: 0 auto;
-}
-
-.commitments-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 24px;
-}
-
+/* Commitment cards */
 .commitment-card {
   background: white;
   border-radius: 24px;
