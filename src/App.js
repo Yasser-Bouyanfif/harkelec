@@ -198,24 +198,6 @@ function App() {
             </div>
           </div>
 
-          <div className="stats-bar">
-            <div className="stat-item">
-              <strong>200+</strong>
-              <span>installations électriques livrées</span>
-            </div>
-            <div className="stat-item">
-              <strong>80%</strong>
-              <span>de projets domotiques connectés</span>
-            </div>
-            <div className="stat-item">
-              <strong>150 km</strong>
-              <span>de câbles posés chaque année</span>
-            </div>
-            <div className="stat-item">
-              <strong>48h</strong>
-              <span>pour un diagnostic et un devis</span>
-            </div>
-          </div>
         </div>
       </section>
 
@@ -358,7 +340,7 @@ function App() {
               </div>
               <div className="contact-card">
                 <h3>✉ Email</h3>
-                <a href="mailto:contact@harkelec.fr">contact@harkelec.fr</a>
+                <a href="mailto:contact@hark-elec31.fr">contact@hark-elec31.fr</a>
                 <span>Réponse garantie sous 48h</span>
               </div>
             </div>
@@ -436,8 +418,6 @@ function App() {
             </div>
           </div>
           <div className="footer-links">
-            <span>SIRET 123 456 789 00012</span>
-            <span>Spécialiste IRVE et solutions électriques</span>
             <span>
               &copy; {new Date().getFullYear()} Hark-Elec 31. Tous droits réservés.
             </span>
