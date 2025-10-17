@@ -43,9 +43,6 @@ const services = [
     description:
       "Installation de bornes de recharge et accompagnement sur les solutions d'efficacité énergétique éligibles aux aides de l'État.",
     items: [
-      "Études techniques personnalisées",
-      "Pose de wallbox domestiques et pro",
-      "Optimisation de la consommation",
       "Aide au montage des dossiers de financement",
     ],
     icon: "🔋",
@@ -79,7 +76,7 @@ const process = [
   {
     title: "Étude & réalisation",
     description:
-      "Dimensionnement, fourniture du matériel et travaux dans le respect des normes NF C 15-100 et des meilleures pratiques métier.",
+      "Dimensionnement, fourniture du matériel et travaux dans le respect des meilleures pratiques métier.",
   },
   {
     title: "Mise en service & suivi",
