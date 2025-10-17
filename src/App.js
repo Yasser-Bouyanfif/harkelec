@@ -33,7 +33,7 @@ const services = [
     items: [
       "Câblage LAN résidentiel et pro",
       "Installation de prises RJ45 et TV",
-      "Tirage et raccordement fibre FTTH",
+      "Maintenance et optimisation de vos réseaux",
       "Mise en service des box et routeurs",
     ],
     icon: "📶",
@@ -46,18 +46,13 @@ const services = [
       "Études techniques personnalisées",
       "Pose de wallbox domestiques et pro",
       "Optimisation de la consommation",
-      "Qualification RGE pour vos aides",
+      "Aide au montage des dossiers de financement",
     ],
     icon: "🔋",
   },
 ];
 
 const commitments = [
-  {
-    title: "Entreprise certifiée RGE",
-    description:
-      "Travaux éligibles aux dispositifs d'aides comme MaPrimeRénov' grâce à notre qualification Reconnu Garant de l'Environnement.",
-  },
   {
     title: "Accompagnement global",
     description:
@@ -67,6 +62,11 @@ const commitments = [
     title: "Qualité de proximité",
     description:
       "Interventions pour particuliers, entreprises et collectivités avec des matériels professionnels et durables.",
+  },
+  {
+    title: "Expertise reconnue",
+    description:
+      "Un savoir-faire validé par des années d'expérience et une veille permanente sur les meilleures pratiques du secteur.",
   },
 ];
 
@@ -79,7 +79,7 @@ const process = [
   {
     title: "Étude & réalisation",
     description:
-      "Dimensionnement, fourniture du matériel et travaux dans le respect des normes NF C 15-100 et des règles RGE.",
+      "Dimensionnement, fourniture du matériel et travaux dans le respect des normes NF C 15-100 et des meilleures pratiques métier.",
   },
   {
     title: "Mise en service & suivi",
@@ -171,15 +171,14 @@ function App() {
                 Hark-Elec 31, dirigée par Patrice Fonteneau, prend en charge
                 l'intégralité de vos projets : installation, rénovation,
                 dépannage, domotique, réseaux et bornes de recharge. Des
-                prestations certifiées RGE pour des travaux durables et
-                éligibles aux aides de l'État.
+                prestations fiables et durables, éligibles aux aides de l'État.
               </p>
               <div className="hero-actions">
                 <button
                   className="btn btn-primary"
                   onClick={() => scrollToSection("contact")}
                 >
-                  Demander un devis sous 24h
+                  Demander un devis sous 48h
                 </button>
                 <button
                   className="btn btn-secondary"
@@ -189,7 +188,7 @@ function App() {
                 </button>
               </div>
               <ul className="hero-badges">
-                <li>✅ Qualification RGE</li>
+                <li>✅ Expertise certifiée</li>
                 <li>🏢 Particuliers, pros & collectivités</li>
                 <li>🛠️ Dépannages et projets clés en main</li>
               </ul>
@@ -216,7 +215,7 @@ function App() {
               <span>de câbles posés chaque année</span>
             </div>
             <div className="stat-item">
-              <strong>24h</strong>
+              <strong>48h</strong>
               <span>pour un diagnostic et un devis</span>
             </div>
           </div>
@@ -324,7 +323,7 @@ function App() {
               </p>
               <div className="zone-details">
                 <span>Pré-visite numérique</span>
-                <span>Devis sous 24h</span>
+                <span>Devis sous 48h</span>
                 <span>Coordination multi-sites</span>
               </div>
           </div>
@@ -352,7 +351,7 @@ function App() {
             <p>
               Installation, mise en conformité, domotique, réseau ou borne de
               recharge : expliquez-nous vos attentes. Nous vous apportons une
-              réponse claire et budgétisée sous 24h ouvrées.
+              réponse claire et budgétisée sous 48h ouvrées.
             </p>
             <div className="contact-cards">
               <div className="contact-card">
@@ -363,7 +362,7 @@ function App() {
               <div className="contact-card">
                 <h3>✉ Email</h3>
                 <a href="mailto:contact@harkelec.fr">contact@harkelec.fr</a>
-                <span>Réponse garantie sous 24h</span>
+                <span>Réponse garantie sous 48h</span>
               </div>
             </div>
           </div>
@@ -441,7 +440,7 @@ function App() {
           </div>
           <div className="footer-links">
             <span>SIRET 123 456 789 00012</span>
-            <span>Qualification RGE & IRVE</span>
+            <span>Spécialiste IRVE et solutions électriques</span>
             <span>
               &copy; {new Date().getFullYear()} Hark-Elec 31. Tous droits réservés.
             </span>
