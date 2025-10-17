@@ -264,30 +264,15 @@ body {
   filter: drop-shadow(0 24px 40px rgba(15, 23, 42, 0.12));
 }
 
-/* Stats */
-.stats-bar {
+/* Hero commitments */
+.hero-commitments {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
 }
 
-.stat-item {
-  background: white;
-  border-radius: 20px;
-  padding: 20px;
-  text-align: center;
+.hero-commitments .commitment-card {
   box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
-}
-
-.stat-item strong {
-  display: block;
-  font-size: 1.8rem;
-  color: #0d9488;
-}
-
-.stat-item span {
-  font-size: 0.9rem;
-  color: #64748b;
 }
 
 /* Sections */
@@ -724,12 +709,8 @@ section {
     text-align: center;
   }
 
-  .stats-bar {
-    gap: 14px;
-  }
-
-  .stat-item {
-    padding: 18px;
+  .hero-commitments {
+    gap: 18px;
   }
 }
 

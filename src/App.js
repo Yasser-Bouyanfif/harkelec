@@ -198,23 +198,13 @@ function App() {
             </div>
           </div>
 
-          <div className="stats-bar">
-            <div className="stat-item">
-              <strong>200+</strong>
-              <span>installations électriques livrées</span>
-            </div>
-            <div className="stat-item">
-              <strong>80%</strong>
-              <span>de projets domotiques connectés</span>
-            </div>
-            <div className="stat-item">
-              <strong>150 km</strong>
-              <span>de câbles posés chaque année</span>
-            </div>
-            <div className="stat-item">
-              <strong>48h</strong>
-              <span>pour un diagnostic et un devis</span>
-            </div>
+          <div className="hero-commitments">
+            {commitments.map((item) => (
+              <div className="commitment-card" key={`${item.title}-hero`}>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -354,12 +344,10 @@ function App() {
               <div className="contact-card">
                 <h3>☎ Téléphone</h3>
                 <a href="tel:+33673262371">06 73 26 23 71</a>
-                <span>Urgences et rendez-vous</span>
               </div>
               <div className="contact-card">
                 <h3>✉ Email</h3>
                 <a href="mailto:contact@hark-elec31.fr">contact@hark-elec31.fr</a>
-                <span>Réponse garantie sous 48h</span>
               </div>
             </div>
           </div>
@@ -437,9 +425,6 @@ function App() {
           </div>
           <div className="footer-links">
             <span>SIRET 123 456 789 00012</span>
-            <span>
-              &copy; {new Date().getFullYear()} Hark-Elec 31. Tous droits réservés.
-            </span>
           </div>
         </div>
       </footer>
