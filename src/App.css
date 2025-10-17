@@ -317,6 +317,7 @@ section {
   display: grid;
   gap: 28px;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  align-items: stretch;
 }
 
 .service-card {
@@ -325,12 +326,19 @@ section {
   padding: 32px;
   display: flex;
   flex-direction: column;
+  height: 100%;
   gap: 18px;
   border: 1px solid rgba(15, 23, 42, 0.05);
   box-shadow: 0 20px 40px rgba(15, 23, 42, 0.06);
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease;
+}
+
+@media (min-width: 1200px) {
+  .services-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
 }
 
 .service-card:hover {
