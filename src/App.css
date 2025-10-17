@@ -374,7 +374,7 @@ section {
   gap: 8px;
   color: #334155;
   font-size: 0.95rem;
-  margin-top: auto;
+  margin-top: 0;
 }
 
 .service-content li::before {
