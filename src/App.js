@@ -5,7 +5,7 @@ const services = [
   {
     title: "Électricité générale",
     description:
-      "Installation complète, rénovation et mise en conformité NF C 15-100 pour l'habitat et le tertiaire.",
+      "Installation complète, rénovation et mise en conformité électrique pour l'habitat et le tertiaire.",
     items: [
       "Création d'installations neuves",
       "Rénovation et mise aux normes",
@@ -43,9 +43,7 @@ const services = [
     description:
       "Installation de bornes de recharge et accompagnement sur les solutions d'efficacité énergétique éligibles aux aides de l'État.",
     items: [
-      "Études techniques personnalisées",
       "Pose de wallbox domestiques et pro",
-      "Optimisation de la consommation",
       "Aide au montage des dossiers de financement",
     ],
     icon: "🔋",
@@ -79,7 +77,7 @@ const process = [
   {
     title: "Étude & réalisation",
     description:
-      "Dimensionnement, fourniture du matériel et travaux dans le respect des normes NF C 15-100 et des meilleures pratiques métier.",
+      "Dimensionnement, fourniture du matériel et travaux dans le respect des meilleures pratiques métier.",
   },
   {
     title: "Mise en service & suivi",
@@ -129,12 +127,6 @@ function App() {
             <button type="button" onClick={() => scrollToSection("services")}>
               Services
             </button>
-            <button
-              type="button"
-              onClick={() => scrollToSection("engagements")}
-            >
-              Engagements
-            </button>
             <button type="button" onClick={() => scrollToSection("process")}>
               Méthode
             </button>
@@ -170,8 +162,7 @@ function App() {
               <p className="hero-description">
                 Hark-Elec 31, dirigée par Patrice Fonteneau, prend en charge
                 l'intégralité de vos projets : installation, rénovation,
-                dépannage, domotique, réseaux et bornes de recharge. Des
-                prestations fiables et durables, éligibles aux aides de l'État.
+                dépannage, domotique, réseaux et bornes de recharge.
               </p>
               <div className="hero-actions">
                 <button
@@ -201,23 +192,13 @@ function App() {
             </div>
           </div>
 
-          <div className="stats-bar">
-            <div className="stat-item">
-              <strong>200+</strong>
-              <span>installations électriques livrées</span>
-            </div>
-            <div className="stat-item">
-              <strong>80%</strong>
-              <span>de projets domotiques connectés</span>
-            </div>
-            <div className="stat-item">
-              <strong>150 km</strong>
-              <span>de câbles posés chaque année</span>
-            </div>
-            <div className="stat-item">
-              <strong>48h</strong>
-              <span>pour un diagnostic et un devis</span>
-            </div>
+          <div className="hero-commitments">
+            {commitments.map((item) => (
+              <div className="commitment-card" key={`${item.title}-hero`}>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -247,25 +228,6 @@ function App() {
                 </ul>
               </div>
             </article>
-          ))}
-        </div>
-      </section>
-
-      <section id="engagements" className="commitments">
-        <div className="section-header">
-          <span className="section-eyebrow">Nos engagements</span>
-          <h2>Votre sécurité et votre confort comme priorités</h2>
-          <p>
-            Nous garantissons des travaux tracés, conformes et pensés pour la
-            performance énergétique de vos installations.
-          </p>
-        </div>
-        <div className="commitments-grid">
-          {commitments.map((item) => (
-            <div className="commitment-card" key={item.title}>
-              <h3>{item.title}</h3>
-              <p>{item.description}</p>
-            </div>
           ))}
         </div>
       </section>
@@ -357,12 +319,10 @@ function App() {
               <div className="contact-card">
                 <h3>☎ Téléphone</h3>
                 <a href="tel:+33673262371">06 73 26 23 71</a>
-                <span>Urgences et rendez-vous</span>
               </div>
               <div className="contact-card">
                 <h3>✉ Email</h3>
-                <a href="mailto:contact@harkelec.fr">contact@harkelec.fr</a>
-                <span>Réponse garantie sous 48h</span>
+                <a href="mailto:contact@hark-elec31.fr">contact@hark-elec31.fr</a>
               </div>
             </div>
           </div>
@@ -440,10 +400,6 @@ function App() {
           </div>
           <div className="footer-links">
             <span>SIRET 123 456 789 00012</span>
-            <span>Spécialiste IRVE et solutions électriques</span>
-            <span>
-              &copy; {new Date().getFullYear()} Hark-Elec 31. Tous droits réservés.
-            </span>
           </div>
         </div>
       </footer>
