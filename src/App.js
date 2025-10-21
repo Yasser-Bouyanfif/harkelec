@@ -86,8 +86,46 @@ const process = [
   },
 ];
 
+const contactServiceOptions = [
+  {
+    value: "installation",
+    label: "Installation ou rénovation électrique",
+  },
+  {
+    value: "depannage",
+    label: "Dépannage / Mise en sécurité",
+  },
+  {
+    value: "domotique",
+    label: "Domotique & automatismes",
+  },
+  {
+    value: "reseau",
+    label: "Réseaux informatiques / Fibre optique",
+  },
+  {
+    value: "irve",
+    label: "Borne de recharge véhicule électrique",
+  },
+  {
+    value: "autre",
+    label: "Autre demande",
+  },
+];
+
 function App() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [formData, setFormData] = useState({
+    fullName: "",
+    phone: "",
+    email: "",
+    service: "",
+    message: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formStatus, setFormStatus] = useState({ type: null, message: "" });
+
+  const serviceOptions = contactServiceOptions;
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 40);
@@ -106,6 +144,89 @@ function App() {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((previous) => ({ ...previous, [name]: value }));
+  };
+
+  const getServiceLabel = (value) =>
+    serviceOptions.find((option) => option.value === value)?.label ?? value;
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    if (isSubmitting) {
+      return;
+    }
+
+    setIsSubmitting(true);
+    setFormStatus({ type: null, message: "" });
+
+    try {
+      const trimmedData = {
+        fullName: formData.fullName.trim(),
+        phone: formData.phone.trim(),
+        email: formData.email.trim(),
+        service: formData.service,
+        message: formData.message.trim(),
+      };
+
+      if (
+        !trimmedData.fullName ||
+        !trimmedData.phone ||
+        !trimmedData.service ||
+        !trimmedData.message
+      ) {
+        throw new Error(
+          "Merci de compléter tous les champs obligatoires avant l'envoi."
+        );
+      }
+
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...trimmedData,
+          serviceLabel: getServiceLabel(trimmedData.service),
+        }),
+      });
+
+      const result = await response.json().catch(() => null);
+
+      if (!response.ok) {
+        const errorMessage =
+          (result && (result.error || result.message)) ||
+          "Une erreur est survenue";
+        throw new Error(errorMessage);
+      }
+
+      setFormStatus({
+        type: "success",
+        message:
+          "Merci ! Votre message a bien été envoyé. Nous vous recontactons sous 48h ouvrées.",
+      });
+      setFormData({
+        fullName: "",
+        phone: "",
+        email: "",
+        service: "",
+        message: "",
+      });
+    } catch (error) {
+      setFormStatus({
+        type: "error",
+        message:
+          error?.message && error.message !== ""
+            ? error.message
+            : "Impossible d'envoyer votre demande pour le moment. Merci de réessayer plus tard ou de nous appeler directement.",
+      });
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -327,7 +448,7 @@ function App() {
             </div>
           </div>
           <div className="contact-form-container">
-            <form className="contact-form">
+            <form className="contact-form" onSubmit={handleSubmit} noValidate>
               <div className="form-row">
                 <div className="form-group required">
                   <label htmlFor="nom">Nom complet</label>
@@ -335,6 +456,9 @@ function App() {
                     id="nom"
                     type="text"
                     placeholder="Votre nom et prénom"
+                    name="fullName"
+                    value={formData.fullName}
+                    onChange={handleInputChange}
                     required
                   />
                 </div>
@@ -344,32 +468,39 @@ function App() {
                     id="telephone"
                     type="tel"
                     placeholder="06 12 34 56 78"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleInputChange}
                     required
                   />
                 </div>
               </div>
               <div className="form-group">
                 <label htmlFor="email">Adresse email</label>
-                <input id="email" type="email" placeholder="votre@email.fr" />
+                <input
+                  id="email"
+                  type="email"
+                  placeholder="votre@email.fr"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                />
               </div>
               <div className="form-group required">
                 <label htmlFor="service">Nature du besoin</label>
-                <select id="service" required>
+                <select
+                  id="service"
+                  name="service"
+                  value={formData.service}
+                  onChange={handleInputChange}
+                  required
+                >
                   <option value="">Sélectionnez un service</option>
-                  <option value="installation">
-                    Installation ou rénovation électrique
-                  </option>
-                  <option value="depannage">
-                    Dépannage / Mise en sécurité
-                  </option>
-                  <option value="domotique">Domotique & automatismes</option>
-                  <option value="reseau">
-                    Réseaux informatiques / Fibre optique
-                  </option>
-                  <option value="irve">
-                    Borne de recharge véhicule électrique
-                  </option>
-                  <option value="autre">Autre demande</option>
+                  {serviceOptions.map((option) => (
+                    <option key={option.value} value={option.value}>
+                      {option.label}
+                    </option>
+                  ))}
                 </select>
               </div>
               <div className="form-group required">
@@ -378,12 +509,30 @@ function App() {
                   id="description"
                   rows="4"
                   placeholder="Décrivez vos travaux : type de bien, contraintes, délais souhaités..."
+                  name="message"
+                  value={formData.message}
+                  onChange={handleInputChange}
                   required
                 ></textarea>
               </div>
-              <button type="submit" className="btn btn-primary btn-full">
-                📧 Envoyer ma demande de devis
+              <button
+                type="submit"
+                className="btn btn-primary btn-full"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? "Envoi en cours..." : "📧 Envoyer ma demande de devis"}
               </button>
+              {formStatus.message && (
+                <div
+                  className={`form-message ${
+                    formStatus.type === "success" ? "success" : "error"
+                  }`}
+                  role="status"
+                  aria-live="polite"
+                >
+                  {formStatus.message}
+                </div>
+              )}
             </form>
           </div>
         </div>
