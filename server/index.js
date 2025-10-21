@@ -1,4 +1,5 @@
 const http = require('http');
+const https = require('https');
 const { URL } = require('url');
 const fs = require('fs');
 const path = require('path');
@@ -86,9 +87,9 @@ async function handleContactRequest(req, res) {
     });
 
     if (!resendResponse.ok) {
-      const errorText = await safeReadResponse(resendResponse);
-      console.error('Erreur Resend:', errorText);
-      res.writeHead(502, { 'Content-Type': 'application/json' });
+      console.error('Erreur Resend:', resendResponse.body || resendResponse.status);
+      const status = resendResponse.status === 429 ? 429 : 502;
+      res.writeHead(status, { 'Content-Type': 'application/json' });
       res.end(
         JSON.stringify({
           error: "L'envoi de votre message a échoué. Merci de réessayer un peu plus tard.",
@@ -100,9 +101,15 @@ async function handleContactRequest(req, res) {
     res.writeHead(200, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify({ message: 'Votre message a bien été transmis.' }));
   } catch (error) {
-    const status = error.statusCode || 500;
-    res.writeHead(status, { 'Content-Type': 'application/json' });
-    res.end(JSON.stringify({ error: error.message || 'Une erreur inattendue est survenue.' }));
+    console.error('Erreur lors du traitement de la demande de contact:', error);
+    const fallbackStatus =
+      error.statusCode || (typeof error.code === 'string' ? 502 : 500);
+    const message =
+      fallbackStatus === 502
+        ? "Le service d'envoi d'emails est momentanément indisponible. Merci de réessayer un peu plus tard."
+        : error.message || 'Une erreur inattendue est survenue.';
+    res.writeHead(fallbackStatus, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ error: message }));
   }
 }
 
@@ -239,22 +246,42 @@ async function sendResendEmail({ nom, telephone, email, service, description, ht
     payload.reply_to = [email];
   }
 
-  return fetch(RESEND_API_URL, {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${RESEND_API_KEY}`,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(payload),
-  });
-}
+  const requestBody = JSON.stringify(payload);
 
-async function safeReadResponse(response) {
-  try {
-    return await response.text();
-  } catch (error) {
-    return 'Impossible de lire la réponse de Resend';
-  }
+  return new Promise((resolve, reject) => {
+    const request = https.request(
+      RESEND_API_URL,
+      {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${RESEND_API_KEY}`,
+          'Content-Type': 'application/json',
+          'Content-Length': Buffer.byteLength(requestBody),
+        },
+      },
+      (response) => {
+        const statusCode =
+          typeof response.statusCode === 'number' ? response.statusCode : 0;
+        const chunks = [];
+        response.on('data', (chunk) => chunks.push(chunk));
+        response.on('end', () => {
+          const body = Buffer.concat(chunks).toString('utf8');
+          resolve({
+            ok: statusCode >= 200 && statusCode < 300,
+            status: statusCode,
+            body,
+          });
+        });
+      }
+    );
+
+    request.on('error', (error) => {
+      reject(error);
+    });
+
+    request.write(requestBody);
+    request.end();
+  });
 }
 
 function loadDotEnv() {
