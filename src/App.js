@@ -133,11 +133,14 @@ function App() {
     setFormStatus({ type: "pending", message: "Envoi en cours..." });
 
     try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        process.env.REACT_APP_CONTACT_ENDPOINT || "/api/contact",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        }
+      );
 
       const payload = await response.json().catch(() => ({}));
 
