@@ -1,68 +1,65 @@
-import React, { useEffect, useState } from "react";
-import "./App.css";
+import Head from 'next/head';
+import { useCallback, useEffect, useState } from 'react';
 
 const services = [
   {
-    title: "Électricité générale",
+    title: 'Électricité générale',
     description:
       "Installation complète, rénovation et mise en conformité électrique pour l'habitat et le tertiaire.",
     items: [
       "Création d'installations neuves",
-      "Rénovation et mise aux normes",
-      "Dépannages et sécurisation",
-      "Pose de tableaux, prises et éclairages",
+      'Rénovation et mise aux normes',
+      'Dépannages et sécurisation',
+      'Pose de tableaux, prises et éclairages',
     ],
-    icon: "⚡️",
+    icon: '⚡️',
   },
   {
-    title: "Domotique & automatismes",
+    title: 'Domotique & automatismes',
     description:
-      "Solutions connectées pour piloter votre éclairage, chauffage et motorisations depuis un smartphone ou des scénarios personnalisés.",
+      'Solutions connectées pour piloter votre éclairage, chauffage et motorisations depuis un smartphone ou des scénarios personnalisés.',
     items: [
       "Gestion intelligente de l'éclairage",
-      "Thermostats et chauffage connectés",
-      "Motorisation de portails et garages",
-      "Volets et stores automatisés",
+      'Thermostats et chauffage connectés',
+      'Motorisation de portails et garages',
+      'Volets et stores automatisés',
     ],
-    icon: "🏠",
+    icon: '🏠',
   },
   {
-    title: "Réseaux & fibre optique",
+    title: 'Réseaux & fibre optique',
     description:
       "Conception de réseaux performants, câblage RJ45 et tirage de fibre optique du point de branchement jusqu'à vos équipements.",
     items: [
-      "Câblage LAN résidentiel et pro",
-      "Installation de prises RJ45 et TV",
-      "Maintenance et optimisation de vos réseaux",
-      "Mise en service des box et routeurs",
+      'Câblage LAN résidentiel et pro',
+      'Installation de prises RJ45 et TV',
+      'Maintenance et optimisation de vos réseaux',
+      'Mise en service des box et routeurs',
     ],
-    icon: "📶",
+    icon: '📶',
   },
   {
-    title: "Énergies & mobilité électrique",
+    title: 'Énergies & mobilité électrique',
     description:
       "Installation de bornes de recharge et accompagnement sur les solutions d'efficacité énergétique.",
-    items: [
-      "Études techniques et personnalisés",
-      "Optimisation de la consommation",
-    ],
-    icon: "🔋",
+    items: ["Études techniques et personnalisés", 'Optimisation de la consommation'],
+    icon: '🔋',
   },
 ];
 
 const commitments = [
   {
-    title: "Accompagnement global",
+    title: 'Accompagnement global',
     description:
       "Un interlocuteur unique qui suit votre projet de l'étude technique à la mise en service et la prise en main des équipements.",
   },
   {
-    title: "Qualité de proximité",
+    title: 'Qualité de proximité',
     description:
-      "Interventions pour particuliers, entreprises et collectivités avec des matériels professionnels et durables.",
+      'Interventions pour particuliers, entreprises et collectivités avec des matériels professionnels et durables.',
   },
   {
-    title: "Expertise reconnue",
+    title: 'Expertise reconnue',
     description:
       "Un savoir-faire validé par des années d'expérience et une veille permanente sur les meilleures pratiques du secteur.",
   },
@@ -70,52 +67,74 @@ const commitments = [
 
 const process = [
   {
-    title: "Diagnostic & conseils",
+    title: 'Diagnostic & conseils',
     description:
       "Analyse de l'existant, qualification des besoins et recommandations personnalisées pour sécuriser votre installation.",
   },
   {
-    title: "Étude & réalisation",
+    title: 'Étude & réalisation',
     description:
-      "Dimensionnement, fourniture du matériel et travaux dans le respect des meilleures pratiques métier.",
+      'Dimensionnement, fourniture du matériel et travaux dans le respect des meilleures pratiques métier.',
   },
   {
-    title: "Mise en service & suivi",
+    title: 'Mise en service & suivi',
     description:
       "Tests, programmation des automatismes et accompagnement à la prise en main avec options de maintenance.",
   },
 ];
 
-function App() {
+export default function HomePage() {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
+    if (typeof window === 'undefined') {
+      return undefined;
+    }
+
     const handleScroll = () => setIsScrolled(window.scrollY > 40);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
-  const handleLogoKeyDown = (event) => {
-    if (event.key === "Enter" || event.key === " ") {
-      event.preventDefault();
-      scrollToSection("accueil");
+  const scrollToSection = useCallback((sectionId) => {
+    if (typeof document === 'undefined') {
+      return;
     }
-  };
 
-  const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+      element.scrollIntoView({ behavior: 'smooth' });
     }
-  };
+  }, []);
+
+  const handleLogoKeyDown = useCallback(
+    (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        scrollToSection('accueil');
+      }
+    },
+    [scrollToSection],
+  );
 
   return (
     <div className="App">
-      <nav className={`navbar ${isScrolled ? "scrolled" : ""}`}>
+      <Head>
+        <title>Hark-Elec 31 - Installations électriques et domotiques</title>
+        <meta
+          name="description"
+          content="Installations électriques, domotique, réseaux et bornes de recharge sur-mesure avec Hark-Elec 31."
+        />
+      </Head>
+
+      <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
         <div className="nav-container">
           <div
             className="nav-logo"
-            onClick={() => scrollToSection("accueil")}
+            onClick={() => scrollToSection('accueil')}
             onKeyDown={handleLogoKeyDown}
             role="button"
             tabIndex={0}
@@ -124,16 +143,16 @@ function App() {
             <span>Hark-Elec 31</span>
           </div>
           <div className="nav-links">
-            <button type="button" onClick={() => scrollToSection("services")}>
+            <button type="button" onClick={() => scrollToSection('services')}>
               Services
             </button>
-            <button type="button" onClick={() => scrollToSection("process")}>
+            <button type="button" onClick={() => scrollToSection('process')}>
               Méthode
             </button>
-            <button type="button" onClick={() => scrollToSection("zone")}>
+            <button type="button" onClick={() => scrollToSection('zone')}>
               Zone
             </button>
-            <button type="button" onClick={() => scrollToSection("contact")}>
+            <button type="button" onClick={() => scrollToSection('contact')}>
               Contact
             </button>
           </div>
@@ -160,21 +179,14 @@ function App() {
                 </span>
               </h1>
               <p className="hero-description">
-                Hark-Elec 31, dirigée par Patrice Fonteneau, prend en charge
-                l'intégralité de vos projets : installation, rénovation,
-                dépannage, domotique, réseaux et bornes de recharge.
+                Hark-Elec 31, dirigée par Patrice Fonteneau, prend en charge l'intégralité de vos projets : installation,
+                rénovation, dépannage, domotique, réseaux et bornes de recharge.
               </p>
               <div className="hero-actions">
-                <button
-                  className="btn btn-primary"
-                  onClick={() => scrollToSection("contact")}
-                >
+                <button className="btn btn-primary" onClick={() => scrollToSection('contact')}>
                   Demander un devis sous 48h
                 </button>
-                <button
-                  className="btn btn-secondary"
-                  onClick={() => scrollToSection("services")}
-                >
+                <button className="btn btn-secondary" onClick={() => scrollToSection('services')}>
                   Découvrir nos services
                 </button>
               </div>
@@ -185,10 +197,7 @@ function App() {
               </ul>
             </div>
             <div className="hero-visual">
-              <img
-                src="/ampoule.png"
-                alt="Illustration d'une ampoule lumineuse"
-              />
+              <img src="/ampoule.png" alt="Illustration d'une ampoule lumineuse" />
             </div>
           </div>
 
@@ -208,9 +217,8 @@ function App() {
           <span className="section-eyebrow">Nos expertises</span>
           <h2>Des services électriques complets et évolutifs</h2>
           <p>
-            Installation générale, domotique, réseau et mobilité électrique :
-            nous couvrons tous vos besoins avec des solutions fiables,
-            performantes et évolutives pour votre habitat ou votre entreprise.
+            Installation générale, domotique, réseau et mobilité électrique : nous couvrons tous vos besoins avec des solutions
+            fiables, performantes et évolutives pour votre habitat ou votre entreprise.
           </p>
         </div>
 
@@ -237,8 +245,7 @@ function App() {
           <span className="section-eyebrow">Notre méthodologie</span>
           <h2>Un accompagnement transparent à chaque étape</h2>
           <p>
-            De l'audit initial à la prise en main des équipements, nous
-            sécurisons votre projet électrique et digital.
+            De l'audit initial à la prise en main des équipements, nous sécurisons votre projet électrique et digital.
           </p>
         </div>
         <div className="process-grid">
@@ -257,10 +264,8 @@ function App() {
           <span className="section-eyebrow">Zone d’intervention</span>
           <h2>Un artisan mobile sur votre département et les alentours</h2>
           <p>
-            Nous assurons les interventions sur site pour les habitations,
-            commerces et collectivités. Dépannages urgents, chantiers
-            planifiés ou projets connectés : nous nous adaptons à votre
-            planning et à vos contraintes.
+            Nous assurons les interventions sur site pour les habitations, commerces et collectivités. Dépannages urgents,
+            chantiers planifiés ou projets connectés : nous nous adaptons à votre planning et à vos contraintes.
           </p>
         </div>
         <div className="zone-content">
@@ -268,8 +273,7 @@ function App() {
             <div className="zone-card">
               <h3>Zone prioritaire</h3>
               <p>
-                Dépannages rapides et chantiers planifiés dans la commune de
-                rattachement de Hark-Elec 31 et les villes voisines.
+                Dépannages rapides et chantiers planifiés dans la commune de rattachement de Hark-Elec 31 et les villes voisines.
               </p>
               <div className="zone-details">
                 <span>Intervention urgente</span>
@@ -280,15 +284,14 @@ function App() {
             <div className="zone-card">
               <h3>Zone étendue</h3>
               <p>
-                Prise en charge de vos projets électriques, domotiques et
-                réseaux sur l'ensemble du département et limitrophes.
+                Prise en charge de vos projets électriques, domotiques et réseaux sur l'ensemble du département et limitrophes.
               </p>
               <div className="zone-details">
                 <span>Pré-visite numérique</span>
                 <span>Devis sous 48h</span>
                 <span>Coordination multi-sites</span>
               </div>
-          </div>
+            </div>
           </div>
           <div className="map-container">
             <iframe
@@ -300,7 +303,7 @@ function App() {
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               title="Localisation d'Auribail"
-            ></iframe>
+            />
           </div>
         </div>
       </section>
@@ -311,9 +314,8 @@ function App() {
             <span className="section-eyebrow">Contact</span>
             <h2>Discutons de votre projet électrique</h2>
             <p>
-              Installation, mise en conformité, domotique, réseau ou borne de
-              recharge : expliquez-nous vos attentes. Nous vous apportons une
-              réponse claire et budgétisée sous 48h ouvrées.
+              Installation, mise en conformité, domotique, réseau ou borne de recharge : expliquez-nous vos attentes. Nous vous
+              apportons une réponse claire et budgétisée sous 48h ouvrées.
             </p>
             <div className="contact-cards">
               <div className="contact-card">
@@ -331,21 +333,11 @@ function App() {
               <div className="form-row">
                 <div className="form-group required">
                   <label htmlFor="nom">Nom complet</label>
-                  <input
-                    id="nom"
-                    type="text"
-                    placeholder="Votre nom et prénom"
-                    required
-                  />
+                  <input id="nom" type="text" placeholder="Votre nom et prénom" required />
                 </div>
                 <div className="form-group required">
                   <label htmlFor="telephone">Téléphone</label>
-                  <input
-                    id="telephone"
-                    type="tel"
-                    placeholder="06 12 34 56 78"
-                    required
-                  />
+                  <input id="telephone" type="tel" placeholder="06 12 34 56 78" required />
                 </div>
               </div>
               <div className="form-group">
@@ -356,19 +348,11 @@ function App() {
                 <label htmlFor="service">Nature du besoin</label>
                 <select id="service" required>
                   <option value="">Sélectionnez un service</option>
-                  <option value="installation">
-                    Installation ou rénovation électrique
-                  </option>
-                  <option value="depannage">
-                    Dépannage / Mise en sécurité
-                  </option>
+                  <option value="installation">Installation ou rénovation électrique</option>
+                  <option value="depannage">Dépannage / Mise en sécurité</option>
                   <option value="domotique">Domotique & automatismes</option>
-                  <option value="reseau">
-                    Réseaux informatiques / Fibre optique
-                  </option>
-                  <option value="irve">
-                    Borne de recharge véhicule électrique
-                  </option>
+                  <option value="reseau">Réseaux informatiques / Fibre optique</option>
+                  <option value="irve">Borne de recharge véhicule électrique</option>
                   <option value="autre">Autre demande</option>
                 </select>
               </div>
@@ -379,7 +363,7 @@ function App() {
                   rows="4"
                   placeholder="Décrivez vos travaux : type de bien, contraintes, délais souhaités..."
                   required
-                ></textarea>
+                />
               </div>
               <button type="submit" className="btn btn-primary btn-full">
                 📧 Envoyer ma demande de devis
@@ -406,5 +390,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
