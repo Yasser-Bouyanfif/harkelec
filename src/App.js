@@ -154,9 +154,9 @@ function App() {
                 Électricien généraliste pour particuliers & professionnels
               </span>
               <h1>
-                Des installations
+                Votre électricien sur Auribail
                 <span className="hero-highlight">
-                  électriques et connectées sur-mesure
+                  et 40 km aux alentours dont Toulouse
                 </span>
               </h1>
               <p className="hero-description">
@@ -399,7 +399,14 @@ function App() {
             </div>
           </div>
           <div className="footer-links">
-            <span>SIRET 123 456 789 00012</span>
+            <span>© {new Date().getFullYear()} Hark-Elec 31. Tous droits réservés.</span>
+            <a
+              href="https://yasserr.dev"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Propulsé par CodeVerse
+            </a>
           </div>
         </div>
       </footer>
