@@ -27,9 +27,9 @@ const services = [
     icon: "🏠",
   },
   {
-    title: "Réseaux & fibre optique",
+    title: "Réseaux",
     description:
-      "Conception de réseaux performants, câblage RJ45 et tirage de fibre optique du point de branchement jusqu'à vos équipements.",
+      "Conception de réseaux performants et câblage RJ45",
     items: [
       "Câblage LAN résidentiel et pro",
       "Installation de prises RJ45 et TV",
@@ -364,7 +364,7 @@ function App() {
                   </option>
                   <option value="domotique">Domotique & automatismes</option>
                   <option value="reseau">
-                    Réseaux informatiques / Fibre optique
+                    Réseaux informatiques
                   </option>
                   <option value="irve">
                     Borne de recharge véhicule électrique
