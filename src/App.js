@@ -150,14 +150,11 @@ function App() {
         <div className="hero-container">
           <div className="hero-grid">
             <div className="hero-text">
-              <span className="hero-eyebrow">
-                Électricien généraliste pour particuliers & professionnels
-              </span>
               <h1>
-                <span className="hero-location">
+                <span className="hero-highlight">
                   Électricien dans la Haute-Garonne
                 </span>{" "}
-                <span className="hero-highlight">(Auribail – Toulouse)</span>
+                <span className="hero-location">Auribail – Toulouse</span>
               </h1>
               <p className="hero-description">
                 Hark-Elec 31, dirigée par Patrice Fonteneau, prend en charge
