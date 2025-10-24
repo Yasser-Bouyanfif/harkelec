@@ -154,7 +154,7 @@ function App() {
                 <span className="hero-highlight">
                   Électricien dans la Haute-Garonne
                 </span>{" "}
-                <span className="hero-highlight">Auribail – Toulouse</span>
+                <span className="hero-location">Auribail – Toulouse</span>
               </h1>
               <p className="hero-description">
                 Hark-Elec 31, dirigée par Patrice Fonteneau, prend en charge
