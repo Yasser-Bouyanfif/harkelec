@@ -156,7 +156,7 @@ function App() {
               <h1>
                 Des installations
                 <span className="hero-highlight">
-                  électriques et connectées sur-mesure
+                  électriques et connectées sur-mesure.
                 </span>
               </h1>
               <p className="hero-description">
