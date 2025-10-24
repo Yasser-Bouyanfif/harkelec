@@ -151,7 +151,7 @@ function App() {
           <div className="hero-grid">
             <div className="hero-text">
               <h1>
-                <span className="hero-location">
+                <span className="hero-highlight">
                   Électricien dans la Haute-Garonne
                 </span>{" "}
                 <span className="hero-highlight">Auribail – Toulouse</span>
