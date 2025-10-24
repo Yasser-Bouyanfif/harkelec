@@ -120,7 +120,7 @@ function App() {
             role="button"
             tabIndex={0}
           >
-            <img src="/logo.png" alt="Hark-Elec 31" />
+            <img src="/logo.webp" alt="Hark-Elec 31" />
             <span>Hark-Elec 31</span>
           </div>
           <div className="nav-links">
