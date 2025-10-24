@@ -86,14 +86,88 @@ const process = [
   },
 ];
 
+const initialContactForm = {
+  name: "",
+  phone: "",
+  email: "",
+  service: "",
+  message: "",
+};
+
+const contactServices = [
+  "Installation ou rénovation électrique",
+  "Dépannage / Mise en sécurité",
+  "Domotique & automatismes",
+  "Réseaux informatiques / Fibre optique",
+  "Borne de recharge véhicule électrique",
+  "Autre demande",
+];
+
 function App() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [formData, setFormData] = useState(initialContactForm);
+  const [formStatus, setFormStatus] = useState({ type: "idle", message: "" });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 40);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((previous) => ({
+      ...previous,
+      [name]: value,
+    }));
+  };
+
+  const handleContactSubmit = async (event) => {
+    event.preventDefault();
+    if (isSubmitting) {
+      return;
+    }
+
+    setIsSubmitting(true);
+    setFormStatus({ type: "pending", message: "Envoi en cours..." });
+
+    try {
+      const response = await fetch(
+        process.env.REACT_APP_CONTACT_ENDPOINT || "/api/contact",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        }
+      );
+
+      const payload = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        throw new Error(
+          payload.error ||
+            "Impossible d'envoyer votre message pour le moment. Merci de réessayer dans quelques instants."
+        );
+      }
+
+      setFormStatus({
+        type: "success",
+        message:
+          "Merci ! Votre demande a bien été envoyée. Nous vous recontacterons sous 48h ouvrées.",
+      });
+      setFormData(initialContactForm);
+    } catch (error) {
+      setFormStatus({
+        type: "error",
+        message:
+          error?.message ||
+          "Une erreur inattendue est survenue pendant l'envoi. Veuillez réessayer plus tard.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   const handleLogoKeyDown = (event) => {
     if (event.key === "Enter" || event.key === " ") {
@@ -327,7 +401,7 @@ function App() {
             </div>
           </div>
           <div className="contact-form-container">
-            <form className="contact-form">
+            <form className="contact-form" onSubmit={handleContactSubmit}>
               <div className="form-row">
                 <div className="form-group required">
                   <label htmlFor="nom">Nom complet</label>
@@ -336,6 +410,9 @@ function App() {
                     type="text"
                     placeholder="Votre nom et prénom"
                     required
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
                   />
                 </div>
                 <div className="form-group required">
@@ -345,31 +422,38 @@ function App() {
                     type="tel"
                     placeholder="06 12 34 56 78"
                     required
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleInputChange}
                   />
                 </div>
               </div>
               <div className="form-group">
                 <label htmlFor="email">Adresse email</label>
-                <input id="email" type="email" placeholder="votre@email.fr" />
+                <input
+                  id="email"
+                  type="email"
+                  placeholder="votre@email.fr"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                />
               </div>
               <div className="form-group required">
                 <label htmlFor="service">Nature du besoin</label>
-                <select id="service" required>
+                <select
+                  id="service"
+                  required
+                  name="service"
+                  value={formData.service}
+                  onChange={handleInputChange}
+                >
                   <option value="">Sélectionnez un service</option>
-                  <option value="installation">
-                    Installation ou rénovation électrique
-                  </option>
-                  <option value="depannage">
-                    Dépannage / Mise en sécurité
-                  </option>
-                  <option value="domotique">Domotique & automatismes</option>
-                  <option value="reseau">
-                    Réseaux informatiques / Fibre optique
-                  </option>
-                  <option value="irve">
-                    Borne de recharge véhicule électrique
-                  </option>
-                  <option value="autre">Autre demande</option>
+                  {contactServices.map((serviceOption) => (
+                    <option key={serviceOption} value={serviceOption}>
+                      {serviceOption}
+                    </option>
+                  ))}
                 </select>
               </div>
               <div className="form-group required">
@@ -379,11 +463,23 @@ function App() {
                   rows="4"
                   placeholder="Décrivez vos travaux : type de bien, contraintes, délais souhaités..."
                   required
+                  name="message"
+                  value={formData.message}
+                  onChange={handleInputChange}
                 ></textarea>
               </div>
-              <button type="submit" className="btn btn-primary btn-full">
-                📧 Envoyer ma demande de devis
+              <button
+                type="submit"
+                className="btn btn-primary btn-full"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? "Envoi en cours..." : "📧 Envoyer ma demande de devis"}
               </button>
+              {formStatus.type !== "idle" && (
+                <div className={`form-status ${formStatus.type}`}>
+                  {formStatus.message}
+                </div>
+              )}
             </form>
           </div>
         </div>
