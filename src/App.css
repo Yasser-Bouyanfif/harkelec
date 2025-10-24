@@ -217,7 +217,6 @@ body {
 }
 
 .hero-highlight {
-  display: block;
   color: #0d9488;
   font-weight: 700;
 }
@@ -674,6 +673,28 @@ section {
   font-size: 0.9rem;
 }
 
+.footer-links span {
+  color: inherit;
+}
+
+.footer-links a {
+  color: #64748b;
+  text-decoration: none;
+  font-weight: 500;
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.footer-credits-highlight {
+  color: #0ea5e9;
+  font-weight: 600;
+}
+
+.footer-credits:hover .footer-credits-highlight {
+  color: #0284c7;
+}
+
 /* Responsive */
 @media (max-width: 1024px) {
   .hero-grid,
@@ -708,6 +729,10 @@ section {
 
   .form-row {
     grid-template-columns: 1fr;
+  }
+
+  .hero-visual {
+    display: none;
   }
 
   .hero-badges li {
