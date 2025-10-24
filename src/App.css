@@ -221,6 +221,11 @@ body {
   font-weight: 700;
 }
 
+.hero-location {
+  color: #0ea5e9;
+  font-weight: 700;
+}
+
 .hero-description {
   color: #475569;
   font-size: 1.05rem;
