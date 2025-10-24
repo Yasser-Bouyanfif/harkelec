@@ -710,6 +710,10 @@ section {
     grid-template-columns: 1fr;
   }
 
+  .hero-visual {
+    display: none;
+  }
+
   .hero-badges li {
     width: 100%;
     text-align: center;
