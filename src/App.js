@@ -154,9 +154,9 @@ function App() {
                 Électricien généraliste pour particuliers & professionnels
               </span>
               <h1>
-                Votre électricien sur Auribail
+                Votre électricien sur{" "}
                 <span className="hero-highlight">
-                  et 40 km aux alentours dont Toulouse
+                  Auribail et 40 km aux alentours dont Toulouse
                 </span>
               </h1>
               <p className="hero-description">
@@ -401,11 +401,13 @@ function App() {
           <div className="footer-links">
             <span>© {new Date().getFullYear()} Hark-Elec 31. Tous droits réservés.</span>
             <a
+              className="footer-credits"
               href="https://yasserr.dev"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Propulsé par CodeVerse
+              <span className="footer-credits-prefix">Propulsé par</span>{" "}
+              <span className="footer-credits-highlight">Code Verse</span>
             </a>
           </div>
         </div>
