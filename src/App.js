@@ -150,9 +150,6 @@ function App() {
         <div className="hero-container">
           <div className="hero-grid">
             <div className="hero-text">
-              <span className="hero-eyebrow">
-                Électricien généraliste pour particuliers & professionnels
-              </span>
               <h1>
                 <span className="hero-location">
                   Électricien dans la Haute-Garonne
