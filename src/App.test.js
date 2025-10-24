@@ -1,8 +1,8 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { render, screen } from "@testing-library/react";
+import App from "./App";
 
-test('renders learn react link', () => {
+test("affiche le numéro de téléphone de contact", () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  const phoneLinks = screen.getAllByRole("link", { name: /06 73 26 23 71/i });
+  expect(phoneLinks.length).toBeGreaterThan(0);
 });

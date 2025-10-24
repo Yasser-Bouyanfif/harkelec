@@ -86,8 +86,19 @@ const process = [
   },
 ];
 
+const initialFormState = {
+  nom: "",
+  telephone: "",
+  email: "",
+  service: "",
+  description: "",
+};
+
 function App() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [formData, setFormData] = useState(initialFormState);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formFeedback, setFormFeedback] = useState({ type: "idle", message: "" });
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 40);
@@ -106,6 +117,59 @@ function App() {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    if (formFeedback.type !== "idle") {
+      setFormFeedback({ type: "idle", message: "" });
+    }
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    if (isSubmitting) return;
+
+    const payload = {
+      nom: formData.nom.trim(),
+      telephone: formData.telephone.trim(),
+      email: formData.email.trim(),
+      service: formData.service.trim(),
+      description: formData.description.trim(),
+    };
+
+    setIsSubmitting(true);
+    setFormFeedback({ type: "loading", message: "Envoi en cours..." });
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (!response.ok) {
+        const result = await response.json().catch(() => ({}));
+        throw new Error(result.error || "Impossible d'envoyer votre message pour le moment.");
+      }
+
+      setFormFeedback({
+        type: "success",
+        message: "Merci ! Votre demande a bien été envoyée.",
+      });
+      setFormData(initialFormState);
+    } catch (error) {
+      setFormFeedback({
+        type: "error",
+        message:
+          error.message || "Une erreur inattendue est survenue. Merci de réessayer plus tard.",
+      });
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -327,7 +391,7 @@ function App() {
             </div>
           </div>
           <div className="contact-form-container">
-            <form className="contact-form">
+            <form className="contact-form" onSubmit={handleSubmit} noValidate>
               <div className="form-row">
                 <div className="form-group required">
                   <label htmlFor="nom">Nom complet</label>
@@ -335,7 +399,11 @@ function App() {
                     id="nom"
                     type="text"
                     placeholder="Votre nom et prénom"
+                    name="nom"
+                    value={formData.nom}
+                    onChange={handleInputChange}
                     required
+                    disabled={isSubmitting}
                   />
                 </div>
                 <div className="form-group required">
@@ -344,17 +412,36 @@ function App() {
                     id="telephone"
                     type="tel"
                     placeholder="06 12 34 56 78"
+                    name="telephone"
+                    value={formData.telephone}
+                    onChange={handleInputChange}
                     required
+                    disabled={isSubmitting}
                   />
                 </div>
               </div>
               <div className="form-group">
                 <label htmlFor="email">Adresse email</label>
-                <input id="email" type="email" placeholder="votre@email.fr" />
+                <input
+                  id="email"
+                  type="email"
+                  placeholder="votre@email.fr"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  disabled={isSubmitting}
+                />
               </div>
               <div className="form-group required">
                 <label htmlFor="service">Nature du besoin</label>
-                <select id="service" required>
+                <select
+                  id="service"
+                  name="service"
+                  value={formData.service}
+                  onChange={handleInputChange}
+                  required
+                  disabled={isSubmitting}
+                >
                   <option value="">Sélectionnez un service</option>
                   <option value="installation">
                     Installation ou rénovation électrique
@@ -378,12 +465,30 @@ function App() {
                   id="description"
                   rows="4"
                   placeholder="Décrivez vos travaux : type de bien, contraintes, délais souhaités..."
+                  name="description"
+                  value={formData.description}
+                  onChange={handleInputChange}
                   required
+                  disabled={isSubmitting}
                 ></textarea>
               </div>
-              <button type="submit" className="btn btn-primary btn-full">
+              <button
+                type="submit"
+                className="btn btn-primary btn-full"
+                disabled={isSubmitting}
+                aria-busy={isSubmitting}
+              >
                 📧 Envoyer ma demande de devis
               </button>
+              {formFeedback.message && (
+                <div
+                  className={`form-status ${formFeedback.type}`.trim()}
+                  role="status"
+                  aria-live="polite"
+                >
+                  {formFeedback.message}
+                </div>
+              )}
             </form>
           </div>
         </div>
