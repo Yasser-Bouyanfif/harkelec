@@ -154,10 +154,10 @@ function App() {
                 Électricien généraliste pour particuliers & professionnels
               </span>
               <h1>
-                <span className="hero-highlight">
+                <span className="hero-location">
                   Électricien dans la Haute-Garonne
                 </span>{" "}
-                <span className="hero-location">(Auribail – Toulouse)</span>
+                <span className="hero-highlight">(Auribail – Toulouse)</span>
               </h1>
               <p className="hero-description">
                 Hark-Elec 31, dirigée par Patrice Fonteneau, prend en charge
@@ -269,7 +269,7 @@ function App() {
               <h3>Zone prioritaire</h3>
               <p>
                 Dépannages rapides et chantiers planifiés dans la commune de
-                rattachement de Hark-Elec 31 et les villes voisines.
+                Auribail et 40km aux alentours.
               </p>
               <div className="zone-details">
                 <span>Intervention urgente</span>
