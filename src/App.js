@@ -186,7 +186,7 @@ function App() {
             </div>
             <div className="hero-visual">
               <img
-                src="/ampoule.png"
+                src="/ampoule.webp"
                 alt="Illustration d'une ampoule lumineuse"
               />
             </div>
@@ -392,7 +392,7 @@ function App() {
       <footer className="footer">
         <div className="footer-content">
           <div className="footer-brand">
-            <img src="/logo.png" alt="Hark-Elec 31" />
+            <img src="/logo.webp" alt="Hark-Elec 31" />
             <div>
               <strong>Hark-Elec 31</strong>
               <span>Patrice Fonteneau - Électricien généraliste</span>
