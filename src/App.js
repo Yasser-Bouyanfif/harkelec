@@ -154,10 +154,10 @@ function App() {
                 Électricien généraliste pour particuliers & professionnels
               </span>
               <h1>
-                Des installations
                 <span className="hero-highlight">
-                  électriques et connectées sur-mesure
-                </span>
+                  Électricien dans la Haute-Garonne
+                </span>{" "}
+                <span className="hero-location">(Auribail – Toulouse)</span>
               </h1>
               <p className="hero-description">
                 Hark-Elec 31, dirigée par Patrice Fonteneau, prend en charge
@@ -399,7 +399,16 @@ function App() {
             </div>
           </div>
           <div className="footer-links">
-            <span>SIRET 123 456 789 00012</span>
+            <span>© {new Date().getFullYear()} Hark-Elec 31. Tous droits réservés.</span>
+            <a
+              className="footer-credits"
+              href="https://yasserr.dev"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span className="footer-credits-prefix">Propulsé par</span>{" "}
+              <span className="footer-credits-highlight">Code Verse</span>
+            </a>
           </div>
         </div>
       </footer>
