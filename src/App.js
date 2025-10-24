@@ -154,7 +154,7 @@ function App() {
                 Électricien généraliste pour particuliers & professionnels
               </span>
               <h1>
-                Votre électricien sur{" "}
+                Électricien sur{" "}
                 <span className="hero-highlight">
                   Auribail et 40 km aux alentours dont Toulouse
                 </span>
